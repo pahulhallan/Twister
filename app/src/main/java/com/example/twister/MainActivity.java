@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -20,44 +21,44 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final EditText delay = (EditText) findViewById(R.id.delay);
+        //final EditText delay = (EditText) findViewById(R.id.delay);
         //final ImageView limbPic = (ImageView) findViewById(R.id.limb);
-        int delayInt = Integer.parseInt(delay.getText().toString());
-        final Button start = (Button) findViewById(R.id.start);
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                run = true;
-
-                try {
-                    twisterLoop(delayInt);
-                } catch (InterruptedException e) {
-                    // e.printStackTrace();
-                }
-            }
-        });
-
-        final Button stop = (Button) findViewById(R.id.stop);
-        stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                run = false;
-            }
-        });
-
-
-
+       // int delayInt = Integer.parseInt(delay.getText().toString());
     }
 
-    private void twisterLoop(int delayInt) throws InterruptedException {
-        while(run){
-            chooseColor();
-            chooseLimb();
+    public void onStart(View v) {
+        run = true;
+        twisterLoop();
+    }
+    public void onStop(View v) {
+        run = false;
+        //setColor(Color.BLUE);
+    }
+    private void twisterLoop() {
+       // while(run){
+
+           chooseColor();
+           chooseLimb();
            // Thread.sleep(delayInt);
         }
-    }
+
 
     private void chooseLimb() {
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        TextView limb = findViewById(R.id.limb);
+        switch (randomNum) {
+            case 1:
+                limb.setText("LEFT FOOT");
+                break;
+            case 2:
+                limb.setText("LEFT HAND");
+                break;
+            case 3:
+                limb.setText("RIGHT FOOT");
+                break;
+            case 4:
+                limb.setText("RIGHT HAND");
+                break;}
     }
 
     public void chooseColor() {
