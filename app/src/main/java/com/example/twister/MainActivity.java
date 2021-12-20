@@ -46,20 +46,27 @@ public class MainActivity extends AppCompatActivity {
     private void chooseLimb() {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         TextView limb = findViewById(R.id.limb);
+        ImageView limbImage = findViewById(R.id.imageLimb);
         switch (randomNum) {
             case 1:
                 limb.setText("LEFT FOOT");
+                limbImage.setImageResource(R.mipmap.leftfoot_foreground);
                 break;
             case 2:
                 limb.setText("LEFT HAND");
+                limbImage.setImageResource(R.mipmap.lefthand_foreground);
                 break;
             case 3:
                 limb.setText("RIGHT FOOT");
+                limbImage.setImageResource(R.mipmap.rightfoot_foreground);
                 break;
             case 4:
                 limb.setText("RIGHT HAND");
+                limbImage.setImageResource(R.mipmap.righthand_foreground);
                 break;}
     }
+
+
 
     public void chooseColor() {
         int randomNum = rand.nextInt((max - min) + 1) + min;

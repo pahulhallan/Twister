@@ -14,10 +14,9 @@
         android:text="START"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/stop"
-        app:layout_constraintHorizontal_bias="0.33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delay"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/stop"
@@ -29,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/start"
         app:layout_constraintTop_toBottomOf="@+id/delay"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.31" />
 
     <EditText
         android:id="@+id/delay"
@@ -43,16 +42,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/limb" />
 
     <TextView
         android:id="@+id/limb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/delay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageLimb" />
+
+    <ImageView
+        android:id="@+id/imageLimb"
+        android:layout_width="205dp"
+        android:layout_height="175dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/limb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19"
+        app:srcCompat="@mipmap/lefthand_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>
