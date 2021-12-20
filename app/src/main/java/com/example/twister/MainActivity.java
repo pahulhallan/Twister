@@ -72,16 +72,16 @@ public class MainActivity extends AppCompatActivity {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         switch (randomNum) {
             case 1:
-                setColor(Color.RED);
+                setColor(Color.rgb(255,102,102));
                 break;
             case 2:
-                setColor(Color.BLUE);
+                setColor(Color.rgb(175, 225, 175));
                 break;
             case 3:
-                setColor(Color.GREEN);
+                setColor(Color.rgb(193,242,254));
                 break;
             case 4:
-                setColor(Color.YELLOW);
+                setColor(Color.rgb(255,255,153));
                 break;
         }
     }
