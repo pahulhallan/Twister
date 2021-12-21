@@ -27,21 +27,29 @@ public class MainActivity extends AppCompatActivity {
     private Runnable runnable;
     private String limb;
     private String color;
-
+    Button start;
+    Button stop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        start = (Button) findViewById(R.id.start);
+        stop = (Button) findViewById(R.id.stop);
     }
 
     public void onStart(View v) {
         final EditText delay = (EditText) findViewById(R.id.delay);
         int delayInt = Integer.parseInt(delay.getText().toString());
+        stop.setEnabled(true);
+        start.setEnabled(false);
         twist(delayInt);
     }
 
     public void onStop(View v) {
+
         handler.removeCallbacks(runnable);
+        start.setEnabled(true);
+        stop.setEnabled(false);
     }
 
     private void twist(int delay) {
