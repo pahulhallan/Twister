@@ -3,6 +3,7 @@ package com.example.twister;
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,32 +16,48 @@ public class MainActivity extends AppCompatActivity {
     Random rand = new Random();
     int max = 4;
     int min = 1;
-    boolean run = false;
+    private Handler handler;
+    private Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //final EditText delay = (EditText) findViewById(R.id.delay);
-        //final ImageView limbPic = (ImageView) findViewById(R.id.limb);
-       // int delayInt = Integer.parseInt(delay.getText().toString());
     }
 
     public void onStart(View v) {
-        run = true;
-        twisterLoop();
+        final EditText delay = (EditText) findViewById(R.id.delay);
+        int delayInt = Integer.parseInt(delay.getText().toString());
+        twist(delayInt);
     }
     public void onStop(View v) {
-        run = false;
-        //setColor(Color.BLUE);
+        handler.removeCallbacks(runnable);
     }
-    private void twisterLoop() {
-       // while(run){
+    private void twist(int delay) {
+        chooseColor();
+        chooseLimb();
+        twisterLoop(delay);
+    }
 
-           chooseColor();
-           chooseLimb();
-           // Thread.sleep(delayInt);
-        }
+
+    public void twisterLoop(int delay) {
+        handler = new Handler();
+        handler.postDelayed(runnable = new Runnable() {
+            @Override
+            public void run() {
+                chooseColor();
+                chooseLimb();
+                twisterLoop(delay);
+            }
+        }, delay * 1000);
+    }
+
+
+
+
+
+
+
 
 
     private void chooseLimb() {

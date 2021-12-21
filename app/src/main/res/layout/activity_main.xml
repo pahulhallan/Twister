@@ -44,7 +44,7 @@
         android:hint="Enter Delay in seconds"
         android:inputType="number"
         android:minHeight="48dp"
-        android:text="1000"
+        android:text="5"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
