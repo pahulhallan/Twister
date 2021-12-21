@@ -18,6 +18,7 @@ import java.util.Random;
 import android.speech.tts.TextToSpeech;
 
 import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     private Random rand = new Random();
     private final int max = 4;
@@ -38,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
         int delayInt = Integer.parseInt(delay.getText().toString());
         twist(delayInt);
     }
+
     public void onStop(View v) {
         handler.removeCallbacks(runnable);
     }
+
     private void twist(int delay) {
         chooseColor();
         chooseLimb();
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void speak() {
-        new Test("Move your "+limb+" to " +color+"",this);
+        new Speech("Move your " + limb + " to " + color + "", this);
 
     }
 
@@ -91,16 +94,16 @@ public class MainActivity extends AppCompatActivity {
                 limbText.setText("RIGHT HAND");
                 limbImage.setImageResource(R.mipmap.righthand_foreground);
                 limb = "right hand";
-                break;}
+                break;
+        }
     }
-
 
 
     public void chooseColor() {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         switch (randomNum) {
             case 1:
-                setColor(Color.rgb(255,102,102)); //tomato red
+                setColor(Color.rgb(255, 102, 102)); //tomato red
                 color = "red";
                 break;
             case 2:
@@ -108,16 +111,17 @@ public class MainActivity extends AppCompatActivity {
                 color = "green";
                 break;
             case 3:
-                setColor(Color.rgb(193,242,254)); //pale blue
+                setColor(Color.rgb(193, 242, 254)); //pale blue
                 color = "blue";
                 break;
             case 4:
-                setColor(Color.rgb(255,255,153)); //pale yellow
+                setColor(Color.rgb(255, 255, 153)); //pale yellow
                 color = "yellow";
                 break;
         }
     }
-    public void setColor(int color){
+
+    public void setColor(int color) {
         View background = this.getWindow().getDecorView();
         background.setBackgroundColor(color);
     }
@@ -125,13 +129,12 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-
-class Test implements TextToSpeech.OnInitListener {
+class Speech implements TextToSpeech.OnInitListener {
     TextToSpeech tts;
     String text;
 
-    public Test(String text, Context c) {
-        tts = new TextToSpeech(c, this);
+    public Speech(String text, Context context) {
+        tts = new TextToSpeech(context, this);
         this.text = text;
     }
 
@@ -140,7 +143,7 @@ class Test implements TextToSpeech.OnInitListener {
         if (i == TextToSpeech.SUCCESS) {
             tts.setLanguage(Locale.ENGLISH);
             tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-            while(tts.isSpeaking());
+            while (tts.isSpeaking()) ;
         }
     }
 }

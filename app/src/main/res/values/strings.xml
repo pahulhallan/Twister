@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Twister</string>
+    <string name="stop">STOP</string>
+    <string name="enter_delay_in_seconds">Enter delay in seconds</string>
 </resources>
